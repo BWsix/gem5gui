@@ -5,6 +5,8 @@
 !CMakeLists.txt
 !README.md
 
+!gem5gui.cpp
+
 !beamlib/
 !beamlib/**/*
 
