@@ -26,7 +26,7 @@ void render_flag(flag_t* flag, size_t index)
 	char buf[16] = {0};
 
 	sprintf(buf, "##flab_cb%zu", index);
-        ImGui::Checkbox(buf, &(flag->enabled));
+	ImGui::Checkbox(buf, &(flag->enabled));
 	ImGui::SameLine();
 
 	sprintf(buf, "flag %zu", index);
