@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(Beamlib)
+project(gem5gui)
 
 add_subdirectory(glad)
 add_subdirectory(glfw)
@@ -27,3 +27,6 @@ target_include_directories(imgui PUBLIC "imgui/backends/")
 target_link_libraries(imgui PRIVATE glfw glad)
 
 add_subdirectory(beamlib)
+
+add_executable(gem5gui gem5gui.cpp)
+target_link_libraries(gem5gui PRIVATE imgui glfw glad beamlib)

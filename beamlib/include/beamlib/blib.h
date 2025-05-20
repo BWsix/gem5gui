@@ -9,4 +9,6 @@ bool WindowShouldClose(GLFWwindow *window);
 void DestroyWindow(GLFWwindow *window);
 void BeginUI();
 void EndUI();
+void BeginFullscreenWindow(const char *name, bool *flag);
+void EndFullscreenWindow(void);
 } // namespace Blib

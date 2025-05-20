@@ -16,3 +16,6 @@
 
 !imgui/
 !imgui/**/*
+
+!assets/
+!assets/**/*

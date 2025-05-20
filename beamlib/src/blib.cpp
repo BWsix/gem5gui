@@ -84,3 +84,26 @@ void Blib::EndUI() {
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
+
+// see: https://github.com/ocornut/imgui/issues/3541#issuecomment-712248014
+void Blib::BeginFullscreenWindow(const char *name, bool *flag)
+{
+#ifdef IMGUI_HAS_VIEWPORT
+	ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImGui::SetNextWindowPos(viewport->GetWorkPos());
+	ImGui::SetNextWindowSize(viewport->GetWorkSize());
+	ImGui::SetNextWindowViewport(viewport->ID);
+#else 
+	ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f));
+	ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize);
+#endif
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+	ImGui::Begin(name, flag, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize);
+}
+
+// see: https://github.com/ocornut/imgui/issues/3541#issuecomment-712248014
+void Blib::EndFullscreenWindow(void)
+{
+	ImGui::End();
+	ImGui::PopStyleVar(1);
+}
